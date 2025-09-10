@@ -58,7 +58,7 @@ public sealed partial class CCVars
     ///     If empty, the title will be {ui-lobby-title} + the server's full name from the hub
     /// </summary>
     public static readonly CVarDef<string> ServerLobbyName =
-        CVarDef.Create("server.lobby_name", "ХД Проджект", CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("server.lobby_name", "XD Project", CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
     ///     The width of the right side (chat) panel in the lobby
