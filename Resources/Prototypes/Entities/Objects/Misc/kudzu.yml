@@ -338,3 +338,84 @@
   components:
     - type: Kudzu
       spreadChance: 0 #appears during pulsation. It shouldnt spreading.
+
+###XD
+- type: entity
+  id: XKudzu
+  name: Икс Био сухожилие
+  parent: BaseKudzu
+  description: Опаснейшее биооружие.
+  placement:
+    mode: SnapgridCenter
+    snap:
+      - Wall
+  components:
+    - type: MeleeSound
+      soundGroups:
+        Brute:
+          path:
+            "/Audio/Weapons/slash.ogg"
+    - type: Sprite
+      sprite: Objects/Misc/Xkudzu.rsi
+      state: kudzu_11
+      drawdepth: Overdoors
+    - type: KudzuVisuals
+    - type: Clickable
+    - type: Fixtures
+      fixtures:
+        fix1:
+          hard: false
+          density: 7
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.5,-0.5,0.5,0.5"
+          layer:
+          - MidImpassable
+    - type: Damageable
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 100
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - type: DamageContacts
+      damage:
+        types:
+          Slash: 4
+          Piercing: 2
+          Radiation: 6
+    - type: Kudzu
+      growthTickChance: 2
+      spreadChance: 1
+      # Heals each time it manages to do a growth tick:
+      damageRecovery:
+        types:
+          Slash: -2.0
+      coldDamage:
+        types:
+          Cold: 9999.0 #per second, scales with temperature & other constants
+    - type: Barotrauma
+      damage:
+        types:
+          Blunt: 3000.0 #per second, scales with pressure and other constants.
+    - type: AtmosExposed
+    - type: SpeedModifierContacts
+      walkSpeedModifier: 0.1
+      sprintSpeedModifier: 0.1
+    - type: Food # delightfully devilish !
+      delay: 0.5
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          reagents:
+          - ReagentId: Uranium
+            Quantity: 4
+    - type: Respirator
+      damage:
+        types:
+          Asphyxiation: 0.25
+      damageRecovery:
+        types:
+          Asphyxiation: -0.25
