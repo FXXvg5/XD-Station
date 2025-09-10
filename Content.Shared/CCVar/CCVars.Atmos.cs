@@ -16,7 +16,7 @@ public sealed partial class CCVars
     ///     Whether gas differences will move entities.
     /// </summary>
     public static readonly CVarDef<bool> SpaceWind =
-        CVarDef.Create("atmos.space_wind", false, CVar.SERVERONLY);
+        CVarDef.Create("atmos.space_wind", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Divisor from maxForce (pressureDifference * 2.25f) to force applied on objects.
@@ -72,7 +72,7 @@ public sealed partial class CCVars
     ///     Needs <see cref="MonstermosEqualization"/> and <see cref="MonstermosDepressurization"/> to be enabled to work.
     /// </summary>
     public static readonly CVarDef<bool> AtmosGridImpulse =
-        CVarDef.Create("atmos.grid_impulse", false, CVar.SERVERONLY);
+        CVarDef.Create("atmos.grid_impulse", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     What fraction of air from a spaced tile escapes every tick.
